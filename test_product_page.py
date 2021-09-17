@@ -22,7 +22,29 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.solve_quiz_and_get_code()
     page.should_be_book_name()
     page.should_be_price()
-    page.should_be_book_name_on_notification
-    page.should_be_price_on_notification    
+    page.should_be_book_name_on_notification()
+    page.should_be_price_on_notification()    
     page.compare_book_name_and_book_name_on_notification()
-    page.compare_price_and_price_on_notification
+    page.compare_price_and_price_on_notification()
+    
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209"
+    page = ProductPage(browser, link)
+    page.open()
+    page.add_to_cart()
+    page.should_not_be_success_message()
+    
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message() 
+
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket(browser): 
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.add_to_cart()
+    page.should_not_be_success_message_disappeared()
