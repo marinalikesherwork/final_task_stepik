@@ -13,3 +13,4 @@ class ProductPageLocators():
     BOOK_NAME = (By.CSS_SELECTOR, ".product_main h1")
     BOOK_NAME_NOTIFICATION = (By.CSS_SELECTOR, "#messages .alert:nth-child(1) strong")
     PRICE_NOTIFICATION = (By.CSS_SELECTOR, "#messages .alert-info strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert:nth-child(1) .alertinner")
